@@ -33,8 +33,8 @@ Even if you don’t populate user IDs initially, you will later.
 Next question (Question 3 — impacts schema design and audit model)
 
 ## Do you need a full change history (audit trail) for key tables (who changed what and when), or is it enough to store just: created_at, updated_at and the latest state:
-A) Full audit history (append-only log of changes).
-B) Basic timestamps only (latest state only).
+- A) Full audit history (append-only log of changes).
+- B) Basic timestamps only (latest state only).
 
 ### Answer: A
 
