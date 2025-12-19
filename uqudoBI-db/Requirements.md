@@ -1,6 +1,6 @@
 ## Question 1 (this impacts multi-user security and database setup):
 Will your users connect directly to PostgreSQL (e.g., using a DB client / scripts / connectors), or will they only access data through an application/UI (e.g., NocoDB now, your custom app later), with no direct DB access?
-### Answer:  “DB reachable remotely, but only via strict network controls + SSL, with read-only accounts for connectors”
+### Answer:  “DB reachable remotely, but only via strict network controls + SSL, with read-only accounts for connectors” while Admin can connect directly (for troubleshooting, imports, fixes).
 
 >Cautions / controls you should adopt with DB reachable remotely \
 1-Never expose Postgres openly to “the whole internet.” Remote access does not mean public access. it will be either: \
