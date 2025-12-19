@@ -1,1 +1,3 @@
-
+Context
+Decision
+Consequences
