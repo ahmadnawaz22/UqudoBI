@@ -30,9 +30,11 @@ Will your users connect directly to PostgreSQL (e.g., using a DB client / script
 -optionally created_by, updated_by \
 Even if you don’t populate user IDs initially, you will later.
 
-When the database is hosted online, how do you expect remote users/tools to connect in practice?
-Choose one (this affects your security/network configuration):
-(1) IP allowlist only (users connect from known fixed IPs)
-(2) VPN required (WireGuard/Tailscale/OpenVPN) for anyone connecting
-(3) SSH tunnel required (users connect via an SSH bastion)
-(4) Combination (e.g., VPN for humans, allowlist for server-to-server)
+Next question (Question 3 — impacts schema design and audit model)
+
+## Do you need a full change history (audit trail) for key tables (who changed what and when), or is it enough to store just: created_at, updated_at and the latest state:
+A) Full audit history (append-only log of changes).
+B) Basic timestamps only (latest state only).
+
+### Answer: A
+
