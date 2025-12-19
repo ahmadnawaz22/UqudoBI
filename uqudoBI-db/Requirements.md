@@ -82,4 +82,36 @@ B) Read-only users do NOT connect to PostgreSQL
 
 ### Answer: A
 
+## Question 7: Read-only access scope
+
+For read-only users with direct DB access, what should they be allowed to query?
+
+Options:
+- A) Reporting views only (recommended for control)
+- B) Reporting views + selected base tables
+- C) All tables (true read-only, no restrictions)
+
+Impact:
+- Data exposure risk
+- Query performance
+- Future ability to enforce row-level security
+
+### A
+
+## Question 8: Schema change workflow
+
+How will database schema changes be made?
+
+Options:
+- A) SQL migrations only (every change is a numbered SQL file)
+- B) Manual changes allowed in dev, then copied to prod
+- C) Combination (migrations preferred, manual allowed occasionally)
+
+Impact:
+- Reproducibility
+- Ability to rebuild environments
+- Long-term maintainability
+
+### Answer: A
+
 
