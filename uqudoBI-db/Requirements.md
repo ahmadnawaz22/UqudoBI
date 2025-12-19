@@ -30,10 +30,56 @@ Will your users connect directly to PostgreSQL (e.g., using a DB client / script
 -optionally created_by, updated_by \
 Even if you don’t populate user IDs initially, you will later.
 
-## Next question (Question 3 — impacts schema design and audit model)
+## Question 3 — impacts schema design and audit model
 Do you need a full change history (audit trail) for key tables (who changed what and when), or is it enough to store just: created_at, updated_at and the latest state:
 - A) Full audit history (append-only log of changes).
 - B) Basic timestamps only (latest state only).
 
 ### Answer: A
+
+## Question 4 - Environment separation
+
+Do we want separate environments to reduce risk?
+
+Options:
+- A) Separate Dev and Prod environments
+- B) Single environment only
+
+Impact:
+- Backup strategy
+- Migration workflow
+- User access control
+- Risk of data corruption
+
+### Answer: B
+
+## Question 5 - Environment isolation strategy
+
+How should Dev and Prod be separated in PostgreSQL?
+
+Options:
+- A) Single PostgreSQL instance, separate databases (e.g., revops_dev, revops_prod)
+- B) Single PostgreSQL instance, single database, separate schemas (e.g., dev.*, prod.*)
+
+Impact:
+- Access control
+- Backup/restore safety
+- Risk of cross-environment mistakes
+- Operational simplicity
+
+### Answer : A
+
+## Question 6 (reframed): How will "read-only users" access data?
+
+Choose ONE (this affects database roles, views, and what we build first):
+
+A) Read-only users connect directly to PostgreSQL with their own read-only accounts
+   - They can run queries (ideally against reporting views, not raw tables)
+
+B) Read-only users do NOT connect to PostgreSQL
+   - They only consume outputs: Google Sheets / Excel extracts / BI dataset / BigQuery
+   - (They can still have app access for entry/requests)
+
+### Answer: A
+
 
